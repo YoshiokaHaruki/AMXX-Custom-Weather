@@ -1,5 +1,9 @@
 # AMXX Custom Weather
-The plugin adds the ability to put your own weather effects under each map
+The plugin adds the ability to put your own weather effects under each map.
+
+This is version 2.0, since earlier, in the year 2019, I already made this plugin, but I decided to update it and make support for using the plugin as an API for other plugins and adding settings using a JSON file.
+
+Old version: https://vk.com/t3_plugins?w=wall-150066493_599
 
 ---
 ### Requirements
