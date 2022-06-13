@@ -48,6 +48,8 @@ Old version: https://vk.com/t3_plugins?w=wall-150066493_599
   * Array `"color":` in object `"fog":` responsible for the color of the fog. Specify the color value in RGB
   * Object `"density":` in object `"fog":` responsible for the density of fog. The value must be fractional.
 
+If you do not specify any fields in the JSON file at all, the default values from the map will be used
+
 ---
 ### Natives and stocks
 There are several in the ***custom_weather.inc*** file natives and stocks for using in another plugins API.
