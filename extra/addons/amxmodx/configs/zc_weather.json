@@ -1,0 +1,32 @@
+{
+	"de_dust2": [
+		{
+			"fog": {
+				"color": [244, 164, 96],
+				"density": 0.0018
+			},
+			"sky": "de_storm",
+			"lighting": ""
+		}
+	],
+	"cs_office": [
+		{
+			"lighting": "d",
+			"sky": "snowlake_",
+			"weather": "snow",
+			"fog": {
+				"color": [217, 255, 244],
+				"density": 0.0018
+			}
+		}
+	]
+	"any": [
+		{
+			"lighting": "g",
+			"sky": "space"
+		},
+		{
+			"lighting": "f"
+		}
+	]
+}
