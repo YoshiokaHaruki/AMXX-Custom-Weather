@@ -1,5 +1,5 @@
 public stock const PluginName[ ] =		"Addon: Custom Weather";
-public stock const PluginVersion[ ] =	"2.0";
+public stock const PluginVersion[ ] =	"2.0.1";
 public stock const PluginAuthor[ ] =	"Yoshioka Haruki";
 
 /* ~ [ Includes ] ~ */
@@ -223,6 +223,9 @@ public JSON_Weather_LoadData( )
 		}
 
 		json_free( JSON_MapObject );
+
+		if ( bMapFinded )
+			break;
 	}
 
 	json_free( JSON_Handle );
