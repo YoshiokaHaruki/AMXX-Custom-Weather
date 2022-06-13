@@ -192,7 +192,7 @@ public JSON_Weather_LoadData( )
 						if ( JSON_FogColor == Invalid_JSON )
 							continue;
 
-						iJsonColorSize = json_array_get_count( JSON_FogColor );
+						iJsonColorSize = clamp( json_array_get_count( JSON_FogColor ), 0, 3 );
 						for ( new k = 0; k < iJsonColorSize; k++ )
 							aWeatherData[ eWeather_FogColor ][ k ] = clamp( json_array_get_number( JSON_FogColor, k ), 0, 255 );
 
