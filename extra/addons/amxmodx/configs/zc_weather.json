@@ -5,8 +5,7 @@
 				"color": [244, 164, 96],
 				"density": 0.0018
 			},
-			"sky": "de_storm",
-			"lighting": ""
+			"sky": "de_storm"
 		}
 	],
 	"cs_office": [
