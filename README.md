@@ -27,15 +27,17 @@ Old version: https://vk.com/t3_plugins?w=wall-150066493_599
 * You can specify several settings at once, just do this:
 
 ```
-{
-  SETTINGS #1
-},
-{
-  SETTINGS #2
-},
-{
-  SETTINGS #3
-}
+"map name": [
+  {
+    SETTINGS #1
+  },
+  {
+    SETTINGS #2
+  },
+  {
+    SETTINGS #3
+  }
+]
 ```
 * The settings will be selected randomly from all possible settings for a particular map
 
