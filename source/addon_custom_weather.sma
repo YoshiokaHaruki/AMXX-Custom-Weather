@@ -9,7 +9,7 @@ public stock const PluginAuthor[ ] =	"Yoshioka Haruki";
 #include <custom_weather>
 
 /* ~ [ Plugin Settings ] ~ */
-const TaskId_UpdateWeather =			9250; // Change this value if confict with another tasks
+const TaskId_UpdateWeather =			9250; // Change this value if conflict with another tasks
 new const WeatherConfigFile[ ] =		"zc_weather.json";
 
 /* ~ [ Params ] ~ */
