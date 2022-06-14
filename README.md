@@ -53,6 +53,28 @@ Old version: https://vk.com/t3_plugins?w=wall-150066493_599
 If you do not specify any fields in the JSON file at all, the default values from the map will be used
 
 ---
+### Errors and their solutions
+```PowerShell
+[Custom Weather] Invalid open file: "addons/amxmodx/configs/zc_weather.json"
+```
+* The file was not found in the folder. Most likely it does not exist or is incorrectly named.
+
+```PowerShell
+[Custom Weather] Invalid read file: "addons/amxmodx/configs/zc_weather.json"
+```
+* The file was found, but has any errors. As an option: incorrect placements `","` `"{ }"` or `"[ ]"`
+
+```PowerShell
+[Custom Weather] File "addons/amxmodx/configs/zc_weather.json" is empty.
+```
+* The error shows that the file was empty. The plugin just won't start
+
+```PowerShell
+[Custom Weather] Invalid Player (n)
+```
+* These errors only appear when using natives/stocks. The player to whom the native/stack was sent is not valid at the moment.
+
+---
 ### Natives and stocks
 There are several in the ***custom_weather.inc*** file natives and stocks for using in another plugins API.
 
