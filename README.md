@@ -22,7 +22,7 @@ Old version: https://vk.com/t3_plugins?w=wall-150066493_599
 ---
 ### How to use
 * Open ***zc_weather.json*** file and watch examples with 2 maps and 1 any map
-* Array `any` in JSON file means that all other cards will use these settings
+* Array `any` in JSON file means that all other maps will use these settings
 * In `{ }` the settings for the map are specified
 * You can specify several settings at once, just do this:
 
