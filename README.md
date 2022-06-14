@@ -19,6 +19,39 @@ Old version: https://vk.com/t3_plugins?w=wall-150066493_599
 * Restart server or change map
 * If everything is done correctly, the plugin is installed
 
+#### If you are using Zombie Plague 4.3
+* Open `addons\amxmodx\configs\zombieplague.ini` file
+* Search in file, this section:
+```INI
+[Weather Effects]
+RAIN = 1
+SNOW = 0
+FOG = 0
+FOG DENSITY = 0.0018
+FOG COLOR = 128 128 128
+
+[Custom Skies] (randomly chosen if more than one)
+ENABLE = 1
+SKY NAMES = space
+```
+* Disable `RAIN`, `SNOW`, `FOG` and custom skies, like this:
+
+```INI
+[Weather Effects]
+RAIN = 0
+SNOW = 0
+FOG = 0
+FOG DENSITY = 0.0018
+FOG COLOR = 128 128 128
+
+[Custom Skies] (randomly chosen if more than one)
+ENABLE = 0
+SKY NAMES = space
+```
+* Save file
+* Open `addons\amxmodx\configs\zombieplague.cfg` file
+* Find cvar `zp_lighting` and change value to null, like this: `zp_lighting ""`
+
 ---
 ### How to use
 * Open ***zc_weather.json*** file and watch examples with 2 maps and 1 any map
