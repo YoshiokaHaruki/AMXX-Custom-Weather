@@ -125,7 +125,7 @@ stock UTIL_ReceiweW( const iDest, const pReceiver, const iWeatherMode )
 	message_end( );
 }
 
-stock UTIL_Fog( const iDest, const pReceiver, const iColor[ 3 ], const Float: flDensity )
+stock UTIL_Fog( const iDest, const pReceiver, const iColor[ ], const Float: flDensity )
 {
 	static iMsgId_Fog; if ( !iMsgId_Fog ) iMsgId_Fog = get_user_msgid( "Fog" );
 
