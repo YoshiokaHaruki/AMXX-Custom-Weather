@@ -50,7 +50,7 @@ SKY NAMES = space
 ```
 * Save file
 * Open `addons\amxmodx\configs\zombieplague.cfg` file
-* Find cvar `zp_lighting` and change value to null, like this: `zp_lighting ""`
+* Find cvar `zp_lighting` and change value to null, like this: `zp_lighting "0"`
 
 ---
 ### How to use
