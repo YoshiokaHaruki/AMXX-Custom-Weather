@@ -1,5 +1,5 @@
 public stock const PluginName[ ] =		"Addon: Custom Weather";
-public stock const PluginVersion[ ] =	"2.0.1";
+public stock const PluginVersion[ ] =	"2.1";
 public stock const PluginAuthor[ ] =	"Yoshioka Haruki";
 
 /* ~ [ Includes ] ~ */
@@ -158,7 +158,7 @@ public JSON_Weather_LoadData( )
 		if ( IsNullString( szBuffer ) || szBuffer[ 0 ] == '#' )
 			continue;
 
-		if ( ( equali( szBuffer, szMapName ) && ( bMapFinded = true ) ) || equali( szBuffer, "any" ) && !bMapFinded )
+		if ( ( ( containi( szMapName, szBuffer ) != -1 ) && ( bMapFinded = true ) ) || equali( szBuffer, "any" ) && !bMapFinded )
 		{
 			JSON_MapObject = json_object_get_value( JSON_Handle, szBuffer );
 			if ( JSON_MapObject == Invalid_JSON )
@@ -168,61 +168,61 @@ public JSON_Weather_LoadData( )
 			for ( new j = 0; j < iJsonMapSize; j++ )
 			{
 				JSON_MapArray = json_array_get_value( JSON_MapObject, j );
-				if ( JSON_MapArray == Invalid_JSON )
-					continue;
-
-				if ( json_object_has_value( JSON_MapArray, "weather", JSONString ) )
+				if ( JSON_MapArray != Invalid_JSON )
 				{
-					json_object_get_string( JSON_MapArray, "weather", szBuffer, charsmax( szBuffer ) );
-					aWeatherData[ eWeather_Type ] = equal( szBuffer, "rain" ) ? 1 : equal( szBuffer, "snow" ) ? 2 : 0;
-				}
-				else aWeatherData[ eWeather_Type ] = 0;
-
-				if ( json_object_has_value( JSON_MapArray, "fog", JSONObject ) )
-				{
-					JSON_FogObject = json_object_get_value( JSON_MapArray, "fog" );
-					if ( JSON_FogObject == Invalid_JSON )
-						continue;
-
-					aWeatherData[ eWeather_FogEnabled ] = true;
-
-					if ( json_object_has_value( JSON_FogObject, "color", JSONArray ) )
+					if ( json_object_has_value( JSON_MapArray, "weather", JSONString ) )
 					{
-						JSON_FogColor = json_object_get_value( JSON_FogObject, "color" );
-						if ( JSON_FogColor == Invalid_JSON )
-							continue;
-
-						iJsonColorSize = clamp( json_array_get_count( JSON_FogColor ), 0, 3 );
-						for ( new k = 0; k < iJsonColorSize; k++ )
-							aWeatherData[ eWeather_FogColor ][ k ] = clamp( json_array_get_number( JSON_FogColor, k ), 0, 255 );
-
-						json_free( JSON_FogColor );
+						json_object_get_string( JSON_MapArray, "weather", szBuffer, charsmax( szBuffer ) );
+						aWeatherData[ eWeather_Type ] = equal( szBuffer, "rain" ) ? 1 : equal( szBuffer, "snow" ) ? 2 : 0;
 					}
+					else aWeatherData[ eWeather_Type ] = 0;
 
-					if ( json_object_has_value( JSON_FogObject, "density", JSONNumber ) )
-						aWeatherData[ eWeather_FogDensity ] = json_object_get_real( JSON_FogObject, "density" );
-					else aWeatherData[ eWeather_FogDensity ] = 0.0;
+					if ( json_object_has_value( JSON_MapArray, "fog", JSONObject ) )
+					{
+						JSON_FogObject = json_object_get_value( JSON_MapArray, "fog" );
+						if ( JSON_FogObject != Invalid_JSON )
+						{
+							aWeatherData[ eWeather_FogEnabled ] = true;
 
-					json_free( JSON_FogObject );
+							if ( json_object_has_value( JSON_FogObject, "color", JSONArray ) )
+							{
+								JSON_FogColor = json_object_get_value( JSON_FogObject, "color" );
+								if ( JSON_FogColor != Invalid_JSON )
+								{
+									iJsonColorSize = clamp( json_array_get_count( JSON_FogColor ), 0, 3 );
+									for ( new k = 0; k < iJsonColorSize; k++ )
+										aWeatherData[ eWeather_FogColor ][ k ] = clamp( json_array_get_number( JSON_FogColor, k ), 0, 255 );
+
+									json_free( JSON_FogColor );
+								}
+							}
+
+							if ( json_object_has_value( JSON_FogObject, "density", JSONNumber ) )
+								aWeatherData[ eWeather_FogDensity ] = json_object_get_real( JSON_FogObject, "density" );
+							else aWeatherData[ eWeather_FogDensity ] = 0.0;
+
+							json_free( JSON_FogObject );
+						}
+					}
+					else aWeatherData[ eWeather_FogEnabled ] = false;
+
+					if ( json_object_has_value( JSON_MapArray, "lighting", JSONString ) )
+						json_object_get_string( JSON_MapArray, "lighting", aWeatherData[ eWeather_LightingLevel ], charsmax( aWeatherData[ eWeather_LightingLevel ] ) );
+					else aWeatherData[ eWeather_LightingLevel ] = EOS;
+
+					if ( json_object_has_value( JSON_MapArray, "sky", JSONString ) )
+						json_object_get_string( JSON_MapArray, "sky", aWeatherData[ eWeather_SkyName ], charsmax( aWeatherData[ eWeather_SkyName ] ) );
+					else aWeatherData[ eWeather_SkyName ] = EOS;
+
+					ArrayPushArray( gl_arWeatherData, aWeatherData );
+					UTIL_ClearColorList( aWeatherData[ eWeather_FogColor ] );
+
+					json_free( JSON_MapArray );
 				}
-				else aWeatherData[ eWeather_FogEnabled ] = false;
-
-				if ( json_object_has_value( JSON_MapArray, "lighting", JSONString ) )
-					json_object_get_string( JSON_MapArray, "lighting", aWeatherData[ eWeather_LightingLevel ], charsmax( aWeatherData[ eWeather_LightingLevel ] ) );
-				else aWeatherData[ eWeather_LightingLevel ] = EOS;
-
-				if ( json_object_has_value( JSON_MapArray, "sky", JSONString ) )
-					json_object_get_string( JSON_MapArray, "sky", aWeatherData[ eWeather_SkyName ], charsmax( aWeatherData[ eWeather_SkyName ] ) );
-				else aWeatherData[ eWeather_SkyName ] = EOS;
-
-				ArrayPushArray( gl_arWeatherData, aWeatherData );
-				UTIL_ClearColorList( aWeatherData[ eWeather_FogColor ] );
-
-				json_free( JSON_MapArray );
 			}
-		}
 
-		json_free( JSON_MapObject );
+			json_free( JSON_MapObject );
+		}
 
 		if ( bMapFinded )
 			break;
