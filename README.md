@@ -6,6 +6,18 @@ This is version 2.0, since earlier, in the year 2019, I already made this plugin
 Old version: https://vk.com/t3_plugins?w=wall-150066493_599
 
 ---
+### Update 2.1
+* Added the ability to write instead of the name of the map - part of the name of the map
+  * It was: "de_dust2" - Settings only for "de_dust2"
+  * Now: "dust" - Settings for all maps that have "dust" in their names (de_dust, de_dust2, and etc)
+  * Or now: "de_" - Settings for all "de_" maps
+  
+---
+### Plans
+- [x] Write part of map name
+- [ ] Ability to use the same settings for multiple maps at once (without creating new map objects in json)
+
+---
 ### Requirements
 * HLDS, Metamod (or Metamod-P), AMX Mod X 1.9.0 and above
 
@@ -60,7 +72,7 @@ SKY NAMES = space
 * You can specify several settings at once, just do this:
 
 ```
-"map name": [
+"map name or part of map name": [
   {
     SETTINGS #1
   },
