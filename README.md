@@ -130,7 +130,7 @@ There are several in the ***custom_weather.inc*** file natives and stocks for us
  * 
  * @param pReceiver				Player Index (If 0 - reset to all, any - reset to concrete player)
  * 
- * @return						Returns 'true' if all effects was reseted
+ * @return					Returns 'true' if all effects was reseted
  */
 native bool: zc_reset_weather_effects( const pReceiver = 0 );
 
@@ -138,9 +138,9 @@ native bool: zc_reset_weather_effects( const pReceiver = 0 );
  * Set specific value for lighting level
  * 
  * @param pReceiver				Player Index (If 0 - reset to all, any - reset to concrete player)
- * @param szLightingLevel		Lighting Level ("" - Default by map, a-z - Specific)
+ * @param szLightingLevel			Lighting Level ("" - Default by map, a-z - Specific)
  * 
- * @return						Returns 'true' if lighting level was setted
+ * @return					Returns 'true' if lighting level was setted
  */
 stock bool: zc_set_lighting( const pReceiver = 0, const szLightingLevel[ ] = "" )
 {
@@ -161,7 +161,7 @@ stock bool: zc_set_lighting( const pReceiver = 0, const szLightingLevel[ ] = "" 
  * 
  * @param pReceiver				Player Index (If 0 - reset to all, any - reset to concrete player)
  * 
- * @return						Returns 'true' if lighting level was reseted
+ * @return					Returns 'true' if lighting level was reseted
  */
 native bool: zc_reset_lighting( const pReceiver = 0 );
 
@@ -169,9 +169,9 @@ native bool: zc_reset_lighting( const pReceiver = 0 );
  * Set specific value for weather
  * 
  * @param pReceiver				Player Index (If 0 - reset to all, any - reset to concrete player)
- * @param iWeatherMode			Weather Mode (0 - none, 1 - rain, 2 - snow)
+ * @param iWeatherMode				Weather Mode (0 - none, 1 - rain, 2 - snow)
  * 
- * @return						Returns 'true' if weather was setted
+ * @return					Returns 'true' if weather was setted
  */
 stock bool: zc_set_weather( const pReceiver = 0, const iWeatherMode = 0 )
 {
@@ -192,7 +192,7 @@ stock bool: zc_set_weather( const pReceiver = 0, const iWeatherMode = 0 )
  * 
  * @param pReceiver				Player Index (If 0 - reset to all, any - reset to concrete player)
  * 
- * @return						Returns 'true' if weather was reseted
+ * @return					Returns 'true' if weather was reseted
  */
 native zc_reset_weather( const pReceiver = 0 );
 
@@ -203,7 +203,7 @@ native zc_reset_weather( const pReceiver = 0 );
  * @param iColor				Color of fog (RGB)
  * @param flDensity				Density of fog
  * 
- * @return						Returns 'true' if weather was setted
+ * @return					Returns 'true' if weather was setted
  */
 stock bool: zc_set_fog( const pReceiver = 0, const iColor[ 3 ] = { 0, 0, 0 }, const Float: flDensity = 0.0 )
 {
